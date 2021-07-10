@@ -1,0 +1,42 @@
+% Load Packages
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{siunitx}
+\usepackage{listings}
+\usepackage{fontawesome}
+\usepackage{subcaption}
+\usepackage{textcomp}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usepackage{pgfplots, pgfplotstable}
+\pgfplotsset{compat=1.14}
+\usetikzlibrary{positioning,calc}
+\usepgfplotslibrary{fillbetween}
+\usepackage{media9}
+\usepackage{ragged2e}
+\usepackage{overpic}
+\usepackage{etoolbox}
+\usepackage{multimedia}
+\usepackage{lipsum}
+\usepackage{upgreek}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{theme/pratttheme}
+
+\usetikzlibrary{external}
+\tikzexternalize[prefix=tikz/]
+
+% superior (?) pause
+\makeatletter
+\renewrobustcmd{\beamer@@pause}[1][]{%
+  \unless\ifmeasuring@%
+    \ifblank{#1}%
+    {\stepcounter{beamerpauses}}%
+    {\setcounter{beamerpauses}{#1}}%
+    \onslide<\value{beamerpauses}->\relax%
+  \fi%
+}
+\makeatother

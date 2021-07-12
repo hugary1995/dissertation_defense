@@ -9,67 +9,74 @@
 \headcommand {\beamer@framepages {3}{3}}
 \headcommand {\beamer@subsectionpages {3}{3}}
 \headcommand {\beamer@subsectionentry {0}{1}{1}{4}{Background}}
-\headcommand {\slideentry {1}{1}{1}{4/4}{Background}{0}}
-\headcommand {\beamer@framepages {4}{4}}
-\headcommand {\beamer@subsectionpages {4}{4}}
-\headcommand {\beamer@subsectionentry {0}{1}{2}{5}{Research contributions}}
-\headcommand {\slideentry {1}{2}{1}{5/5}{Research contributions}{0}}
-\headcommand {\beamer@framepages {5}{5}}
-\headcommand {\beamer@sectionpages {3}{5}}
-\headcommand {\beamer@subsectionpages {5}{5}}
-\headcommand {\sectionentry {2}{The Variational Framework}{6}{The Variational Framework}{0}}
-\headcommand {\slideentry {2}{0}{1}{6/6}{}{0}}
-\headcommand {\beamer@framepages {6}{6}}
-\headcommand {\beamer@subsectionpages {6}{6}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{7}{Kinematics and Constraints}}
-\headcommand {\slideentry {2}{1}{1}{7/7}{Kinematics and Constraints}{0}}
-\headcommand {\beamer@framepages {7}{7}}
-\headcommand {\beamer@subsectionpages {7}{7}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{8}{Thermodynamics}}
-\headcommand {\slideentry {2}{2}{1}{8/8}{Thermodynamics}{0}}
-\headcommand {\beamer@framepages {8}{8}}
-\headcommand {\beamer@subsectionpages {8}{8}}
-\headcommand {\beamer@subsectionentry {0}{2}{3}{9}{Te variational statement}}
-\headcommand {\slideentry {2}{3}{1}{9/9}{Te variational statement}{0}}
-\headcommand {\beamer@framepages {9}{9}}
-\headcommand {\beamer@sectionpages {6}{9}}
-\headcommand {\beamer@subsectionpages {9}{9}}
-\headcommand {\sectionentry {3}{Applications}{10}{Applications}{0}}
-\headcommand {\slideentry {3}{0}{1}{10/10}{}{0}}
-\headcommand {\beamer@framepages {10}{10}}
-\headcommand {\beamer@subsectionpages {10}{10}}
-\headcommand {\beamer@subsectionentry {0}{3}{1}{11}{Intergranular Fracture in Polycrystalline Materials}}
-\headcommand {\slideentry {3}{1}{1}{11/11}{Intergranular Fracture in Polycrystalline Materials}{0}}
-\headcommand {\beamer@framepages {11}{11}}
-\headcommand {\slideentry {3}{1}{2}{12/12}{Intergranular Fracture in Polycrystalline Materials}{0}}
-\headcommand {\beamer@framepages {12}{12}}
-\headcommand {\beamer@subsectionpages {11}{12}}
-\headcommand {\beamer@subsectionentry {0}{3}{2}{13}{Soil Desiccation}}
-\headcommand {\slideentry {3}{2}{1}{13/13}{Soil Desiccation}{0}}
-\headcommand {\beamer@framepages {13}{13}}
-\headcommand {\slideentry {3}{2}{2}{14/14}{Soil Desiccation}{0}}
-\headcommand {\beamer@framepages {14}{14}}
-\headcommand {\beamer@subsectionpages {13}{14}}
-\headcommand {\beamer@subsectionentry {0}{3}{3}{15}{Towards Ductile Fracture}}
-\headcommand {\slideentry {3}{3}{1}{15/15}{Towards Ductile Fracture}{0}}
-\headcommand {\beamer@framepages {15}{15}}
-\headcommand {\slideentry {3}{3}{2}{16/16}{Towards Ductile Fracture}{0}}
-\headcommand {\beamer@framepages {16}{16}}
-\headcommand {\beamer@sectionpages {10}{16}}
-\headcommand {\beamer@subsectionpages {15}{16}}
-\headcommand {\sectionentry {4}{Conclusions and Future Work}{17}{Conclusions and Future Work}{0}}
-\headcommand {\slideentry {4}{0}{1}{17/17}{}{0}}
-\headcommand {\beamer@framepages {17}{17}}
-\headcommand {\beamer@subsectionpages {17}{17}}
-\headcommand {\beamer@subsectionentry {0}{4}{1}{18}{Conclusions}}
-\headcommand {\slideentry {4}{1}{1}{18/18}{Conclusions}{0}}
-\headcommand {\beamer@framepages {18}{18}}
-\headcommand {\beamer@subsectionpages {18}{18}}
-\headcommand {\beamer@subsectionentry {0}{4}{2}{19}{Future work}}
-\headcommand {\slideentry {4}{2}{1}{19/19}{Future work}{0}}
-\headcommand {\beamer@framepages {19}{19}}
-\headcommand {\beamer@partpages {1}{19}}
-\headcommand {\beamer@subsectionpages {19}{19}}
-\headcommand {\beamer@sectionpages {17}{19}}
-\headcommand {\beamer@documentpages {19}}
+\headcommand {\slideentry {1}{1}{1}{4/21}{Background}{0}}
+\headcommand {\beamer@framepages {4}{21}}
+\headcommand {\beamer@subsectionpages {4}{21}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{22}{Phase-field approach to fracture}}
+\headcommand {\slideentry {1}{2}{1}{22/23}{Phase-field approach to fracture}{0}}
+\headcommand {\beamer@framepages {22}{23}}
+\headcommand {\beamer@sectionpages {3}{23}}
+\headcommand {\beamer@subsectionpages {22}{23}}
+\headcommand {\sectionentry {2}{The Variational Framework}{24}{The Variational Framework}{0}}
+\headcommand {\slideentry {2}{0}{1}{24/24}{}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\beamer@subsectionpages {24}{24}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{25}{Kinematics and Constraints}}
+\headcommand {\slideentry {2}{1}{1}{25/25}{Kinematics and Constraints}{0}}
+\headcommand {\beamer@framepages {25}{25}}
+\headcommand {\beamer@subsectionpages {25}{25}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{26}{Thermodynamics}}
+\headcommand {\slideentry {2}{2}{1}{26/26}{Thermodynamics}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\beamer@subsectionpages {26}{26}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{27}{The variational statement}}
+\headcommand {\slideentry {2}{3}{1}{27/27}{The variational statement}{0}}
+\headcommand {\beamer@framepages {27}{27}}
+\headcommand {\beamer@sectionpages {24}{27}}
+\headcommand {\beamer@subsectionpages {27}{27}}
+\headcommand {\sectionentry {3}{Applications}{28}{Applications}{0}}
+\headcommand {\slideentry {3}{0}{1}{28/28}{}{0}}
+\headcommand {\beamer@framepages {28}{28}}
+\headcommand {\beamer@subsectionpages {28}{28}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{29}{Intergranular Fracture in Polycrystalline Materials}}
+\headcommand {\slideentry {3}{1}{1}{29/29}{Intergranular Fracture in Polycrystalline Materials}{0}}
+\headcommand {\beamer@framepages {29}{29}}
+\headcommand {\slideentry {3}{1}{2}{30/30}{Intergranular Fracture in Polycrystalline Materials}{0}}
+\headcommand {\beamer@framepages {30}{30}}
+\headcommand {\beamer@subsectionpages {29}{30}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{31}{Soil Desiccation}}
+\headcommand {\slideentry {3}{2}{1}{31/31}{Soil Desiccation}{0}}
+\headcommand {\beamer@framepages {31}{31}}
+\headcommand {\slideentry {3}{2}{2}{32/32}{Soil Desiccation}{0}}
+\headcommand {\beamer@framepages {32}{32}}
+\headcommand {\beamer@subsectionpages {31}{32}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{33}{Towards Ductile Fracture}}
+\headcommand {\slideentry {3}{3}{1}{33/33}{Towards Ductile Fracture}{0}}
+\headcommand {\beamer@framepages {33}{33}}
+\headcommand {\slideentry {3}{3}{2}{34/34}{Towards Ductile Fracture}{0}}
+\headcommand {\beamer@framepages {34}{34}}
+\headcommand {\beamer@sectionpages {28}{34}}
+\headcommand {\beamer@subsectionpages {33}{34}}
+\headcommand {\sectionentry {4}{Conclusions and Future Work}{35}{Conclusions and Future Work}{0}}
+\headcommand {\slideentry {4}{0}{1}{35/35}{}{0}}
+\headcommand {\beamer@framepages {35}{35}}
+\headcommand {\beamer@subsectionpages {35}{35}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{36}{Conclusions}}
+\headcommand {\slideentry {4}{1}{1}{36/36}{Conclusions}{0}}
+\headcommand {\beamer@framepages {36}{36}}
+\headcommand {\beamer@subsectionpages {36}{36}}
+\headcommand {\beamer@subsectionentry {0}{4}{2}{37}{Future work}}
+\headcommand {\slideentry {4}{2}{1}{37/37}{Future work}{0}}
+\headcommand {\beamer@framepages {37}{37}}
+\headcommand {\beamer@sectionpages {35}{37}}
+\headcommand {\beamer@subsectionpages {37}{37}}
+\headcommand {\sectionentry {5}{References}{38}{References}{0}}
+\headcommand {\beamer@subsectionpages {38}{37}}
+\headcommand {\beamer@subsectionentry {0}{5}{1}{38}{\ }}
+\headcommand {\slideentry {5}{1}{1}{38/38}{\ }{0}}
+\headcommand {\beamer@framepages {38}{38}}
+\headcommand {\beamer@partpages {1}{38}}
+\headcommand {\beamer@subsectionpages {38}{38}}
+\headcommand {\beamer@sectionpages {38}{38}}
+\headcommand {\beamer@documentpages {38}}
 \headcommand {\gdef \inserttotalframenumber {10}}

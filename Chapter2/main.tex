@@ -2,17 +2,151 @@
 
 \sectioncover
 
-\subsection{Kinematics and Constraints}
-
-\begin{frame}
-\end{frame}
-
 \subsection{Thermodynamics}
 
 \begin{frame}
+  \vspace{-2em}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \begin{itemize}
+        \item  Working with the Helmholtz free energy density $\psi$, variables we are concerned with are
+              \begin{align*}
+                \bs{\upphi}, \quad \defgrad^p, \quad \ep, \quad d, \quad T.
+              \end{align*}
+        \item Conservations and thermodynamic laws:
+              \begin{align*}
+                 & \dot{\rho_0} = 0,                                                                             \\
+                 & \rho_0 \bta = \divergence \bfP + \rho_0\btb,                                                  \\
+                 & \bfP\defgrad = \defgrad\bfP^T,                                                                \\
+                 & f -\divergence \bs{\xi} = 0,                                                                  \\
+                 & \dot{u} + \dot{k} = \mathcal{P}^\text{ext} + \rho_0 q - \divergence \bth,                     \\
+                 & \dot{s}^\text{int} = \dot{s} - \dfrac{\rho_0 q}{T} + \divergence \dfrac{\bth}{T} \geqslant 0. 
+              \end{align*}
+      \end{itemize}
+    \end{column}
+    \pause
+    \begin{column}{0.6\textwidth}
+      \begin{itemize}
+        \item Generalized forces are
+              \begin{align*}
+                 & \bfP = \bfP^\text{eq} + \bfP^\text{vis}, \quad \bfT = \bfT^\text{eq} + \bfT^\text{vis}, \quad Y = Y^\text{eq} + Y^\text{vis}, \\
+                 & f = f^\text{eq} + f^\text{vis}, \quad \bs{\xi} = \bs{\xi}^\text{eq} + \bs{\xi}^\text{vis},                                    
+              \end{align*}
+        \item Following the Coleman-Noll procedure:
+              \begin{align*}
+                 & \bfP^\text{eq} = \psi_{,\defgrad}, \quad \bfT^\text{eq} = \psi_{,\defgrad^p}, \quad Y^\text{eq} = \psi_{,\ep}, \\
+                 & f^\text{eq} = \psi_{,d}, \quad \bs{\xi}^\text{eq} = \psi_{,\grad d}, \quad -s = \psi_{,T}.                     
+              \end{align*}
+        \item Viscous forces follow from the dual kinetic potential $\Delta^*$:
+              \begin{align*}
+                 & \bfP^\text{vis} = \Delta^*_{,\dot{\defgrad}}, \quad \bfT^\text{vis} = \Delta^*_{,\dot{\defgrad}^p}, \quad Y^\text{vis} = \Delta^*_{,\epdot}, \\
+                 & f^\text{vis} = \Delta^*_{,\dot{d}}, \quad \bs{\xi}^\text{vis} = \Delta^*_{,\grad\dot{d}}.                                                    
+              \end{align*}
+        \item To satisfy the second law:
+              \begin{align*}
+                \delta = \bfP^\text{vis}:\dot{\defgrad} + \bfT^\text{vis}:\dot{\defgrad}^p + Y^\text{vis}\epdot + f^\text{vis}\dot{d} + \bs{\xi}^\text{vis}\cdot\grad d \geqslant 0.
+              \end{align*}
+      \end{itemize}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \subsection{The variational statement}
 
 \begin{frame}
+  With $\mathcal{V} = \{ \defrate, \dot{\defgrad}^p, \epdot, \dot{d} \}$:
+  \begin{block}{}
+    \vspace{-0.5em}
+    \begin{align*}
+      \left( \mathcal{V}, \dot{s}, T \right) = \arg \left( \inf_{\mathcal{V}, \dot{s}} \sup_T L \right)
+    \end{align*}
+  \end{block}
+  
+  \begin{columns}
+    \pause
+    \begin{column}{0.6\textwidth}
+      Benefits:
+      \begin{itemize}
+        \item From a theoretical standpoint:
+              \begin{itemize}
+                \item The direct method of calculus of variations informs conditions for the existence and uniqueness of solutions.
+                \item Localization effects can be studied within the framework of free-discontinuity problems.
+              \end{itemize}
+        \item From a computational standpoint:
+              \begin{itemize}
+                \item Discretization leads to a symmetric operator.
+                \item Discretization leads to robust and efficient variational constitutive update.
+                \item The total potential can assist line search.
+                \item The total potential can be directly used as an error indicator for adaptive mesh refinement.
+                \item Many powerful optimization packages exist, e.g. PETSc/TAO, Trilinos, Matlab, etc..
+              \end{itemize}
+      \end{itemize}
+    \end{column}
+    \pause
+    \begin{column}{0.4\textwidth}
+      Limitations:
+      \begin{itemize}
+        \item Construction of such a potential is no easy task.
+        \item (Other limitations will be discussed in the end.)
+      \end{itemize}
+      \pause
+      \begin{block}{}
+        \underline{State-of-the-art:} variational brittle fracture that concerns with
+        \begin{align*}
+          \bs{\upphi}, \quad d,
+        \end{align*}
+        while we are looking at
+        \begin{align*}
+          \bs{\upphi}, \quad \defgrad^p, \quad \ep, \quad d, \quad T.
+        \end{align*}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \vspace{-1.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\textwidth}
+      The total potential $L$ is constructed as
+      \begin{align*}
+        L       & = \int\limits_{\body_0} \varphi \diff{V} - \mathcal{P}^\text{ext}, \\
+        \varphi & = \dot{k} + \dot{u} + \Delta^* - T\dot{s} - \chi,                  
+      \end{align*}
+      
+      The external power expenditure $\mathcal{P}^\text{ext}(\defrate, T)$ is defined as
+      \begin{equation*}
+        \begin{aligned}
+          \mathcal{P}^\text{ext} = & \ \underbrace{\int\limits_{\body_0} \rho_0 \btb \cdot \defrate \diff{V}}_\text{body force} + \underbrace{\int\limits_{\partial_t\body_0} \btt \cdot \defrate \diff{A}}_\text{surface traction} + \underbrace{\int\limits_{\partial_h\body_0} \bar{h}_n\ln\left( \dfrac{T}{T_0} \right) \diff{A}}_\text{external heat flux} \\
+                                   & + \underbrace{\int\limits_{\partial_r\body_0} h\left[ T - T_0 \ln\left( \dfrac{T}{T_0} \right) \right] \diff{A}}_\text{external heat convection} - \underbrace{\int\limits_{\body_0} \rho_0 q \ln\left( \dfrac{T}{T_0} \right) \diff{V}}_\text{heat source},                                                               
+        \end{aligned}
+      \end{equation*}
+    \end{column}
+    \pause
+    \begin{column}{0.4\textwidth}
+      \begin{itemize}
+        \item<2-> Mass balance and angular momentum balance are satisfied by construction.
+        \item<3-> Linear momentum balance:
+        \begin{align*}
+          \rho_0\bta = \divergence\bfP + \btb.
+        \end{align*}
+        \item<4-> Micro-macro force balance:
+        \begin{align*}
+          \divergence \bs{\xi} - f = 0.
+        \end{align*}
+        \item<5-> Plastic flow:
+        \begin{align*}
+          \left( \dot{\defgrad}^p, \epdot \right) = & \ \arg\inf_{\dot{\defgrad}^p, \epdot} \left[ \bfT^\text{eq}:\dot{\defgrad}^p + Y^\text{eq}\epdot + \Delta^* \right] \\
+                                                    & \ \text{subject to }\quad \bfL(\bfZ)\dot{\bfZ} = \bs{0}.                                                            
+        \end{align*}
+        \item<6-> Heat transfer:
+        \begin{align*}
+          T\dot{s} = \rho_0 q - \divergence \bth + \delta.
+        \end{align*}
+        \item<7-> (Strict) dissipation inequality requires $\Delta^*$ to be convex in each rate.
+      \end{itemize}
+      
+      
+    \end{column}
+  \end{columns}
 \end{frame}

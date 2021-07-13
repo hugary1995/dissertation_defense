@@ -43,9 +43,9 @@
                 \item result in regularization-dependent response.
                       \pause
               \end{itemize}
-        \item How much plastic dissipation contributes to fracture evolution?
+        \item How much plastic work contributes to fracture evolution?
               \pause
-        \item How much plastic dissipation converts to heat generation?
+        \item How much plastic work converts to heat generation?
       \end{itemize}
       
       \bigskip
@@ -63,6 +63,7 @@
 \end{frame}
 
 \begin{frame}
+  \vspace{-1.5em}
   \begin{block}{}
     \begin{align*}
       L = \int\limits_{\body_0} \left[ \dot{\psi}^e + {\psi^e}^* + (1-\tqf)\dot{\psi}^p + \tqf {\psi^p}^* + \dot{\psi}^f + {\psi^f}^* - T\dot{s} - \chi \right] \diff{V} - \mathcal{P}^\text{ext}, \\
@@ -94,16 +95,666 @@
   }
   
   \only<2>{
-    \begin{columns}[T]
-      \begin{column}{0.33\textwidth}
-        Option 1 (Linear hardening):
+    \begin{columns}
+      \begin{column}{0.5\textwidth}
+        Newtonian viscosity:
         \begin{align*}
-          \psi^e               = & \ g^e \psi^e_\activepart + \psi^e_\inactivepart,                                                              \\
-          \psi^e_\activepart   = & \ \mathbb{H}_1(J)\left\{ \dfrac{1}{2}K\left[ \dfrac{1}{2}(J^2-1) - \ln(J) \right] \right\}                    \\
-                                 & \ + \dfrac{1}{2}G\left( \overbar{\bfC}:{\bfC^p}^{-1} - 3 \right),                                             \\
-          \psi^e_\inactivepart = & \ \left( 1-\mathbb{H}_1(J) \right) \left\{ \dfrac{1}{2}K\left[ \dfrac{1}{2}(J^2-1) - \ln(J) \right] \right\}. 
+          {\psi^e}^* & = g^e J \left[ \dfrac{1}{2}\zeta \tr(\bfd)^2 + \eta \bfd:\bfd \right], \\
+          \bfd       & = \sym\left( \dot{\defgrad}\defgrad^{-1} \right).                      
         \end{align*}
       \end{column}
     \end{columns}
   }
+  
+  \only<3>{
+    \begin{columns}[T]
+      \begin{column}{0.4\textwidth}
+        Flow rule constraints:
+        \begin{align*}
+          \tr\left( \dot{\defgrad}^p{\defgrad^p}^{-1} \right) = 0, \\
+          \norm{\dot{\defgrad}^p{\defgrad^p}^{-1}}^2 - \frac{3}{2} \abs{\epdot}^2 = 0.
+        \end{align*}
+      \end{column}
+      \begin{column}{0.6\textwidth}
+        \begin{remark}[Flow rule]
+          It recovers the Prandtl-Reuss flow rule:
+          \begin{align*}
+            \dot{\defgrad}^p{\defgrad^p}^{-1} = \epdot \bfN^p, \quad \bfN^p = \sqrt{\dfrac{3}{2}}\dfrac{\dev(\bfM)}{\norm{\dev(\bfM)}},
+          \end{align*}
+          and the loading/unloading conditions:
+          \begin{align*}
+             & \phi^p \leqslant 0, \quad \epdot \geqslant 0, \quad \phi^p\epdot = 0,                                                                   \\
+             & \phi^p = \norm{\dev(\bfM)} - \sqrt{\dfrac{2}{3}} Y = \norm{\dev(\bfM)} - \sqrt{\dfrac{2}{3}} \left( Y^\text{eq} + Y^\text{vis} \right). 
+          \end{align*}
+        \end{remark}
+      \end{column}
+    \end{columns}
+  }
+  
+  \only<4>{
+    \begin{columns}[T]
+      \begin{column}{0.5\textwidth}
+        Option 1 (Linear hardening):
+        \begin{align*}
+          \psi^p     & = g^p \left( \sigma_y \ep + \dfrac{1}{2} H \ep^2 \right), \\
+          {\psi^p}^* & = g^p (\sigma_y + H \ep) \epdot.                          
+        \end{align*}
+        Option 2 (Power-law hardening):
+        \begin{align*}
+          \psi^p     & = g^p \dfrac{n}{n+1} \sigma_y \epsilon_0 \left[ \left( 1 + \dfrac{\ep}{\epsilon_0} \right)^{(n+1)/n} - 1 \right], \\
+          {\psi^p}^* & = g^p \sigma_y \left( 1 + \dfrac{\ep}{\epsilon_0} \right)^{1/n} \epdot.                                           
+        \end{align*}
+      \end{column}
+      \begin{column}{0.5\textwidth}
+        Option 3 (Perfect plasticity with thermal softening):
+        \begin{align*}
+          \psi^p     & = g^p \sigma_y^T \ep, \quad {\psi^p}^* = g^p \sigma_y^T \epdot, \\
+          \sigma_y^T & = \dfrac{\sigma_0}{\exp\left( -\dfrac{Q}{RT} \right)}           
+        \end{align*}
+        \begin{remark}[The Taylor-Quinney factor]
+          Due to thermal softening (option 3), to get an increase in temperature from plastic dissipation:
+          \begin{align*}
+            \dfrac{Q}{Q+RT} \leqslant \tqf \leqslant 1.
+          \end{align*}
+        \end{remark}
+      \end{column}
+    \end{columns}
+  }
+  
+  \only<5>{
+    \begin{columns}[T]
+      \begin{column}{0.5\textwidth}
+        Fracture energy density:
+        \begin{align*}
+          \psi^f = \dfrac{\Gc}{c_0l}\left( C \alpha + l^2 \grad d \cdot \grad d \right).
+        \end{align*}
+        Viscous regularization and coalescence dissipation:
+        \begin{align*}
+          {\psi^f}^* = & \ \dfrac{1}{2} v \dot{d}^2 + (1-C) \dfrac{\Gc}{c_0 l}\alpha_{, d}\dot{d}                  \\
+                       & \ - (1-\beta)\dfrac{\Gc}{c_0l}\alpha_{,d}\left( 1-e^{-\ep/\varepsilon_0} \right)\dot{d} . 
+        \end{align*}
+        Irreversibility constraint:
+        \begin{align*}
+          \dot{d} \geqslant 0.
+        \end{align*}
+      \end{column}
+      \begin{column}{0.5\textwidth}
+        \begin{remark}
+          The contributions from plasticity is clear in the fracture envelope:
+          \begin{align*}
+            v\dot{d}      & =\divergence \dfrac{2\Gc l}{c_0} \grad d - \left( \dfrac{\widehat{\Gc}}{c_0 l}\alpha_{,d} + \psi^d \right), \\
+            \psi^d        & = \psi^e_{,d} + (1-\tqf) \psi^p_{,d},                                                                       \\
+            \widehat{\Gc} & = g^c \Gc, \quad g^c = 1-(1-\beta)\left( 1-e^{-\ep/\varepsilon_0} \right),                                  
+          \end{align*}
+        \end{remark}
+        \begin{remark}
+          To satisfy the second law: $0 < C \leqslant \beta$.
+        \end{remark}
+      \end{column}
+    \end{columns}
+  }
+  
+  \only<6>{
+    \begin{columns}[T]
+      \begin{column}{0.5\textwidth}
+        Fourier potential:
+        \begin{align*}
+          \chi & = \dfrac{1}{2}\kappa\btg\cdot\btg, \\
+          \btg & = - \grad T / T.                   
+        \end{align*}
+        \begin{remark}
+          The heat conduction equation can be written as
+          \begin{align*}
+            \rho_0c_v\dot{T} & = \rho_0 q + \divergence \kappa \grad T + \delta + \delta_T,                 \\
+            \delta           & = \bfP^\text{vis}:\dot{\defgrad} + Y^\text{vis}\epdot + f^\text{vis}\dot{d}, \\
+            \delta_T         & = -g^p (1-\tqf) \dfrac{Q}{RT} \sigma_y^T\epdot.                              
+          \end{align*}
+        \end{remark}
+      \end{column}
+    \end{columns}
+  }
+\end{frame}
+
+\begin{frame}
+  \begin{columns}[T]
+    \begin{column}{0.7\textwidth}
+      \vspace{3em}
+      How to best design the coupling between plasticity and fracture remains an open question. Some challenges/issues:
+      \begin{itemize}
+        \item \sout<2->{Fracture tends to propagate along the plastic zone.}
+        \item \sout<7->{Most existing models}
+              \begin{itemize}
+                \item \sout<3->{are not variational,}
+                \item \sout<5->{require re-calibration of material parameters,}
+                \item \sout<7->{result in regularization-dependent response.}
+              \end{itemize}
+        \item \sout<8->{How much plastic work contributes to fracture evolution?}
+        \item \sout<8->{How much plastic work converts to heat generation?}
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      \vspace{-1.5em}
+      \only<4>{
+        \input{Chapter345/figures/compare_alpha}
+      }
+      \only<6>{
+        \input{Chapter345/figures/JR}
+      }
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \vspace{-1.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\textwidth}
+      \vspace{-1em}
+      \begin{figure}
+        \centering
+        \begin{subfigure}{0.32\linewidth}
+          \centering
+          \includegraphics[width=0.8\textwidth]{Chapter345/figures/Chapter5-3pb-load_deflection-constant_beta}
+        \end{subfigure}
+        \begin{subfigure}{0.32\linewidth}
+          \centering
+          \includegraphics[width=0.8\textwidth]{Chapter345/figures/Chapter5-3pb-load_deflection-constant_e0}
+        \end{subfigure}
+        \begin{subfigure}{0.32\linewidth}
+          \centering
+          \includegraphics[width=0.8\textwidth]{Chapter345/figures/Chapter5-3pb-load_deflection_tuned}
+        \end{subfigure}
+        
+        \begin{subfigure}{0.33\textwidth}
+          \centering
+          \includegraphics[width=\textwidth,scale=0.5]{Chapter345/figures/1234}
+        \end{subfigure}
+        \hfill
+        \begin{minipage}{0.6\textwidth}
+          \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Chapter345/figures/I}
+          \end{subfigure}
+          \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Chapter345/figures/II}
+          \end{subfigure}
+          
+          \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Chapter345/figures/III}
+          \end{subfigure}
+          \begin{subfigure}{0.45\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Chapter345/figures/IV}
+          \end{subfigure}
+        \end{minipage}
+        
+        \begin{subfigure}[b]{0.45\textwidth}
+          \centering
+          \includegraphics[width=0.9\textwidth,scale=0.5]{Chapter345/figures/split_experiment}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.45\textwidth}
+          \centering
+          \includegraphics[width=0.9\textwidth,scale=0.5]{Chapter345/figures/split}
+        \end{subfigure}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{itemize}
+        \item A three-point experiment is simulated.
+        \item The aluminum specimen is modeled as a compressible Neo-Hookean material, with linear hardening, $\tqf = 1$.
+        \item Parameters are calibrated based on a tensile tension test.
+        \item Coalescence dissipation is included. The effects of $\beta$ and $\varepsilon_0$ are investigated in a 2D setting.
+        \item ``Shear lips'' are not captured by numerical simulations.
+        \item Crack paths and load deflection curves have excellent agreement with the experiment.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \vspace{-1.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\textwidth}
+      \vspace{-1em}
+      \begin{figure}
+        \centering
+        \begin{subfigure}{0.95\linewidth}
+          \centering
+          \begin{tikzpicture}
+            \node[inner sep=0] (mesh) at (0,0) {\includegraphics[width=0.3\textwidth,scale=0.5]{Chapter345/figures/mesh}};
+            \coordinate (box_sw) at (-0.15, -0.4);
+            \coordinate (box_nw) at (-0.15, 0.48);
+            \coordinate (box_ne) at (0.5, 0.55);
+            \coordinate (box_se) at (0.5, -0.43);
+            
+            \draw [blue] (box_sw) -- (box_nw);
+            \draw [blue] (box_nw) -- (box_ne);
+            \draw [blue] (box_ne) -- (box_se);
+            \draw [blue] (box_se) -- (box_sw);
+            
+            \node[inner sep=0] (meshzoom) at (3,0) {\includegraphics[width=0.3\textwidth,scale=0.5]{Chapter345/figures/meshzoom}};
+            \node (boxzoom) at (meshzoom.south west) [draw,blue,thick,minimum width=0.3\textwidth,minimum height=72,anchor=south west] {};
+            
+            \draw (box_ne) -- (boxzoom.north west);
+            \draw (box_se) -- (boxzoom.south west);
+            
+            \node (A) at (-0.45,0.85) [yellow] {\textbf{A}};
+            \node (B) at (-0.45,-0.85) [yellow] {\textbf{B}};
+          \end{tikzpicture}
+        \end{subfigure}
+        
+        \begin{subfigure}{0.32\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{Chapter345/figures/SFC_schematics}
+        \end{subfigure}
+        \begin{subfigure}{0.32\textwidth}
+          \centering
+          \includegraphics[width=0.55\textwidth]{Chapter345/figures/W_pl_3}
+        \end{subfigure}
+        \begin{subfigure}{0.32\textwidth}
+          \centering
+          \includegraphics[width=0.62\textwidth]{Chapter345/figures/M_3}
+        \end{subfigure}
+        
+        \begin{subfigure}{0.95\textwidth}
+          \begin{tikzpicture}
+            \begin{axis}[
+                cycle list name=exotic,
+                width=\textwidth,
+                height=0.4\textwidth,
+                xmin=0,xmax=7,
+                ymin=0,
+                xlabel=displacement(\SI{}{\milli\meter}),ylabel=force(\SI{}{\kilo\newton}),
+                scaled y ticks=false,
+                xticklabel style={
+                    /pgf/number format/fixed,
+                    /pgf/number format/precision=2
+                  },
+                legend style={
+                    at={(0.1,0.05)},
+                    anchor=south west,
+                    nodes={scale=0.6, transform shape},
+                    fill=none,
+                    draw=none,
+                    cells={align=left}
+                  },
+                legend cell align={left},
+                every axis plot/.append style={thick}
+              ]
+              \addplot +[mark=none,black,dashed] table[x expr=\thisrowno{0},y expr=\thisrowno{1}/1000,col sep=comma]{Chapter345/data/experiment.csv};
+              \addplot +[mark=none] table[x expr=\thisrowno{0},y expr=\thisrowno{1}/1000,col sep=comma]{Chapter345/data/force_disp.csv};
+              \addplot +[mark=none] table[x expr=\thisrowno{0},y expr=\thisrowno{1}/1000,col sep=comma]{Chapter345/data/force_disp_lorenzis_1.csv};
+              \addplot +[mark=none] table[x expr=\thisrowno{0},y expr=\thisrowno{1}/1000,col sep=comma]{Chapter345/data/force_disp_lorenzis_2.csv};
+              \legend{experiment,proposed E-P-D model,prediction with $m=1$ from Ambati et al.,prediction with $m=2$ from Ambati et al.}
+            \end{axis}
+          \end{tikzpicture}
+        \end{subfigure}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{itemize}
+        \item A recent Sandia Fracture Challenge.
+        \item Material properties are calibrated using provided tensile tension test data.
+        \item Loading pins A and B are modeled as purely elastic materials with the same constants as the specimen.
+        \item The predicted force-displacement curve is compared with the experimental data and predictions by other existing phase-field models of ductile fracture.
+        \item The agreement between the experiment and our simulation is remarkable, both in terms of the crack path and the force-displacement curve.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \vspace{-1.5em}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.7\textwidth]{Chapter345/figures/HTHX}
+      \end{figure}
+      
+      Background:
+      \begin{itemize}
+        \item High temperature heat exchangers are key components of many power conversion systems, including advanced nuclear power generation systems.
+        \item They operate in the inlet temperature range of 750-1100 \SI{}{\celsius} and are subject to unique operating challenges including oxidation, corrosion, creep and fracture.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      Model:
+      \begin{itemize}
+        \item To model energy release associated with debonding:
+              \begin{align*}
+                \psi^f = \dfrac{\Gc}{c_0 l} \left( C\alpha(d) + l^2 \grad d \cdot \grad d \right) + \dfrac{1}{\tau} \mathcal{G} \omega(c).
+              \end{align*}
+        \item A lower dimensional representation of the oxide layer:
+              \begin{align*}
+                \psi^e & =  g^e_\text{ip} \psi^e_{\text{ip}, \activepart} + \psi^e_{\text{ip}, \inactivepart} + g^e_\text{op} \psi^e_{\text{op}, \activepart} + \psi^e_{\text{ip}, \inactivepart}. 
+              \end{align*}
+        \item The perfect plasticity model with thermal softening is approximated using a power-law creep model:
+              \begin{align*}
+                \epdot = A \left( \dfrac{\bar{\sigma}}{g^p \sigma_0} \right)^n \exp\left( -\dfrac{nQ}{RT} \right).
+              \end{align*}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \vspace{-1.5em}
+  \begin{columns}[T]
+    \begin{column}{0.6\textwidth}
+      \vspace{-1em}
+      \begin{figure}
+        \centering
+        \begin{subfigure}{0.4\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{Chapter345/figures/top_view}
+        \end{subfigure}
+        \begin{subfigure}{0.4\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{Chapter345/figures/side_view}
+        \end{subfigure}
+        
+        \begin{subfigure}{0.15\textwidth}
+          \caption*{}
+        \end{subfigure}
+        \begin{subfigure}{0.19\textwidth}
+          \centering
+          \caption*{$c$}
+        \end{subfigure}
+        \hspace{0.06\textwidth}
+        \begin{subfigure}{0.19\textwidth}
+          \centering
+          \caption*{$d$}
+        \end{subfigure}
+        \hspace{0.06\textwidth}
+        \begin{subfigure}{0.19\textwidth}
+          \centering
+          \caption*{$\ep$}
+        \end{subfigure}
+        
+        \vspace{-1em}
+        
+        \begin{subfigure}{0.15\textwidth}
+          \caption*{}
+        \end{subfigure}
+        \begin{subfigure}{0.19\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{Chapter345/figures/colorbar_c_rf}
+        \end{subfigure}
+        \hspace{0.06\textwidth}
+        \begin{subfigure}{0.19\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{Chapter345/figures/colorbar_d_rf}
+        \end{subfigure}
+        \hspace{0.06\textwidth}
+        \begin{subfigure}{0.19\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{Chapter345/figures/colorbar_ep_rf}
+        \end{subfigure}
+        
+        \only<1>{
+          \begin{subfigure}{0.15\textwidth}
+            \centering
+            \caption*{30 days}
+          \end{subfigure}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/c.0003}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/d.0003}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/ep.0003}
+          \end{subfigure}
+        }
+        
+        \only<2>{
+          \begin{subfigure}{0.15\textwidth}
+            \centering
+            \caption*{60 days}
+          \end{subfigure}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/c.0006}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/d.0006}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/ep.0006}
+          \end{subfigure}
+        }
+        
+        \only<3>{
+          \begin{subfigure}{0.15\textwidth}
+            \centering
+            \caption*{90 days}
+          \end{subfigure}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/c.0009}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/d.0009}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/ep.0009}
+          \end{subfigure}
+        }
+        
+        \only<4>{
+          \begin{subfigure}{0.15\textwidth}
+            \centering
+            \caption*{120 days}
+          \end{subfigure}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/c.0012}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/d.0012}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/ep.0012}
+          \end{subfigure}
+        }
+        
+        \only<5>{
+          \begin{subfigure}{0.15\textwidth}
+            \centering
+            \caption*{150 days}
+          \end{subfigure}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/c.0015}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/d.0015}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/ep.0015}
+          \end{subfigure}
+        }
+        
+        \only<6>{
+          \begin{subfigure}{0.15\textwidth}
+            \centering
+            \caption*{180 days}
+          \end{subfigure}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/c.0018}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/d.0018}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/ep.0018}
+          \end{subfigure}
+        }
+        
+        \only<7>{
+          \begin{subfigure}{0.15\textwidth}
+            \centering
+            \caption*{1 hour}
+          \end{subfigure}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/c.0021}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/d.0021}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/ep.0021}
+          \end{subfigure}
+        }
+        
+        \only<8>{
+          \begin{subfigure}{0.15\textwidth}
+            \centering
+            \caption*{2 hours}
+          \end{subfigure}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/c.0024}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/d.0024}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/ep.0024}
+          \end{subfigure}
+        }
+        
+        \only<9>{
+          \begin{subfigure}{0.15\textwidth}
+            \centering
+            \caption*{3 hours}
+          \end{subfigure}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/c.0027}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/d.0027}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/ep.0027}
+          \end{subfigure}
+        }
+        
+        \only<10>{
+          \begin{subfigure}{0.15\textwidth}
+            \centering
+            \caption*{4 hours}
+          \end{subfigure}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/c.0030}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/d.0030}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/ep.0030}
+          \end{subfigure}
+        }
+        
+        \only<11>{
+          \begin{subfigure}{0.15\textwidth}
+            \centering
+            \caption*{5 hours}
+          \end{subfigure}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/c.0033}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/d.0033}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/ep.0033}
+          \end{subfigure}
+        }
+        
+        \only<12>{
+          \begin{subfigure}{0.15\textwidth}
+            \centering
+            \caption*{6 hours}
+          \end{subfigure}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/c.0036}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/d.0036}
+          \end{subfigure}
+          \hspace{0.06\textwidth}
+          \begin{subfigure}{0.19\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{Chapter345/figures/ep.0036}
+          \end{subfigure}
+        }
+      \end{figure}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \begin{itemize}
+        \item The HTHX is simulated for 180 days under normal operating conditions, followed by a shutdown (6-hour transition).
+        \item The HTHX is surround by high temperature pressurized fluids during normal operation. The temperature and the pressure of the fluids drop after shutting down.
+        \item Most model parameters are adopted from \cite{xue2020stress}.
+        \item Creep deformation accumulates under normal operating conditions. The effective creep strain localizes around the cracks.
+        \item Debonding occurs at weaker locations in the vicinity of the crack surfaces.
+        \item Transverse cracks nucleate and propagate while shutting down.
+      \end{itemize}
+    \end{column}
+  \end{columns}
 \end{frame}

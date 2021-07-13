@@ -2,12 +2,33 @@
 
 \sectioncover
 
-\subsection{Conclusions}
+\subsection{\ }
 
 \begin{frame}
-\end{frame}
-
-\subsection{Future work}
-
-\begin{frame}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      Conclusions:
+      \begin{itemize}
+        \setlength\itemsep{5pt}
+        \item A variational framework is proposed to model general dissipative solids with fracture.
+        \item Several models are constructed within the framework to study practical engineering problems:
+              \begin{itemize}
+                \setlength\itemsep{3pt}
+                \item \underline{Intergranular fracture:} brittle fracture, quasi-brittle fracture, fragmentation, pressurized cracks;
+                \item \underline{Soil desiccation:} cohesive fracture, traction-free BCs, random fracture properties;
+                \item \underline{Ductile failure:} no re-calibration, regularization-independent response (J-resistance curves), thermal effects, three-point bending, the Sandia Fracture Challenge, oxide spallation in HTHX.
+              \end{itemize}
+      \end{itemize}
+    \end{column}
+    \pause
+    \begin{column}{0.5\textwidth}
+      Future work:
+      \begin{itemize}
+        \item Stress triaxiality effects are not considered in the proposed ductile fracture models. ``Shear lips'' are not captured.
+        \item Fatigue effects are important in structures subject to cyclic loading. Existing fatigue models do not fit into the framework as is. The interplay between fatigue and plasticity could be interesting.
+        \item Fracture nucleation with arbitrary strength surface.
+        \item Ductile failure with impact loading, where dynamic effects, abrupt thermal softening, and heat generation are important.
+      \end{itemize}
+    \end{column}
+  \end{columns}
 \end{frame}

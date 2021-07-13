@@ -27,6 +27,10 @@
 \usepackage{theme/pratttheme}
 \usepackage{xstring}
 \usepackage[customcolors,beamer]{hf-tikz}
+\usepackage{ulem}
+
+% Overlay-aware strikethrough
+\renewcommand<>{\sout}[1]{\alt#2{\beameroriginal{\sout}{#1}}{#1}}
 
 \usetikzlibrary{external,patterns,spy}
 \tikzexternalize[prefix=tikz/]

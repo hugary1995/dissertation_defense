@@ -1,0 +1,88 @@
+\begin{figure}
+  \centering
+  \begin{subfigure}{\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+          colormap/jet,
+          cycle list={[of colormap,samples of colormap=4]},
+          width=\textwidth,
+          height=\textwidth,
+          xmin=0,
+          ymin=0,
+          ymax=1.6,
+          xlabel=$\varepsilon$,ylabel=$\sigma/\sigma_y$,
+          scaled x ticks=false,
+          yticklabel style={
+              /pgf/number format/fixed,
+              /pgf/number format/precision=2
+            },
+          xticklabel style={
+              /pgf/number format/fixed,
+              /pgf/number format/precision=2
+            },
+          legend style={
+              at={(0.05,0.98)},
+              anchor=north west,
+              nodes={scale=0.5, transform shape},
+              fill=none,
+              draw=none,
+              cells={align=left}
+            },
+          legend cell align={left},
+          every axis plot/.append style={thick,no marks}
+        ]
+        \addplot +[black] table[x expr=\thisrowno{1},y expr=\thisrowno{0}/320,col sep=comma]{Chapter345/data/homogenized_EP.csv};
+        \addplot table[x expr=\thisrowno{3},y expr=\thisrowno{2}/320,col sep=comma]{Chapter345/data/homogenized_EPPD_xi_0_psic_1_a_250_R_4.csv};
+        \addplot table[x expr=\thisrowno{3},y expr=\thisrowno{2}/320,col sep=comma]{Chapter345/data/homogenized_EPPD_xi_0_psic_2_a_250_R_4.csv};
+        \addplot table[x expr=\thisrowno{3},y expr=\thisrowno{2}/320,col sep=comma]{Chapter345/data/homogenized_EPPD_xi_0_psic_3_a_250_R_4.csv};
+        \addplot table[x expr=\thisrowno{3},y expr=\thisrowno{2}/320,col sep=comma]{Chapter345/data/homogenized_EPPD_xi_0_psic_4_a_250_R_4.csv};
+        \draw[dashed, thick] (0,1) -- (0.06,1);
+        \legend{no fracture, $\psi_cc_0a/\Gc=0.005$, $\psi_cc_0a/\Gc=0.010$, $\psi_cc_0a/\Gc=0.015$, $\psi_cc_0a/\Gc=0.019$}
+      \end{axis}
+    \end{tikzpicture}
+  \end{subfigure}
+  
+  \begin{subfigure}{\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \begin{axis}[
+          colormap/jet,
+          cycle list={[of colormap,samples of colormap=4]},
+          width=\textwidth,
+          height=\textwidth,
+          xmin=0,
+          ymin=0,
+          ymax=1.6,
+          xlabel=$\varepsilon$,ylabel=$\sigma/\sigma_y$,
+          scaled x ticks=false,
+          yticklabel style={
+              /pgf/number format/fixed,
+              /pgf/number format/precision=2
+            },
+          xticklabel style={
+              /pgf/number format/fixed,
+              /pgf/number format/precision=2
+            },
+          legend style={
+              at={(0.05,0.98)},
+              anchor=north west,
+              nodes={scale=0.5, transform shape},
+              fill=none,
+              draw=none,
+              cells={align=left}
+            },
+          legend cell align={left},
+          every axis plot/.append style={thick,no marks}
+        ]
+        \addplot +[black] table[x expr=\thisrowno{1},y expr=\thisrowno{0}/320,col sep=comma]{Chapter345/data/homogenized_EP.csv};
+        \addplot table[x expr=\thisrowno{3},y expr=\thisrowno{2}/320,col sep=comma]{Chapter345/data/homogenized_EPD_xi_1_psic_0.75_a_2500_R_4.csv};
+        \addplot table[x expr=\thisrowno{3},y expr=\thisrowno{2}/320,col sep=comma]{Chapter345/data/homogenized_EPD_xi_1_psic_0.77_a_2500_R_4.csv};
+        \addplot table[x expr=\thisrowno{3},y expr=\thisrowno{2}/320,col sep=comma]{Chapter345/data/homogenized_EPD_xi_1_psic_0.79_a_2500_R_4.csv};
+        \addplot table[x expr=\thisrowno{3},y expr=\thisrowno{2}/320,col sep=comma]{Chapter345/data/homogenized_EPD_xi_1_psic_0.81_a_2500_R_4.csv};
+        \draw[dashed, thick] (0,1) -- (0.06,1);
+        \legend{no fracture, $\psi_cc_0a/\Gc=0.036$, $\psi_cc_0a/\Gc=0.037$, $\psi_cc_0a/\Gc=0.038$, $\psi_cc_0a/\Gc=0.039$}
+      \end{axis}
+    \end{tikzpicture}
+  \end{subfigure}
+\end{figure}

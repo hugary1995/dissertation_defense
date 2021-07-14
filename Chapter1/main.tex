@@ -5,35 +5,37 @@
 \subsection{Background}
 
 \begin{frame}
-  \begin{itemize}
-    \item<1-> Fracture is a common phenomenon in engineering applications.
-    
-    \item<2-> To characterize fracture by its \textbf{consequence}: \textcolor<3>{red}{fragmentation}, \textcolor<4>{red}{desiccation}, \textcolor<5>{red}{ductile failure}, \textcolor<6>{red}{spallation}, etc.. \\
-    \only<3-6>{\includegraphics[width=0.12\textwidth]{Chapter1/figures/fragmentation}}
-    \only<4-6>{\includegraphics[width=0.3\textwidth]{Chapter1/figures/desiccation}}
-    \only<5-6>{\includegraphics[width=0.24\textwidth]{Chapter1/figures/ductile_failure}}
-    \only<6>{\includegraphics[width=0.14\textwidth]{Chapter1/figures/spallation}}
-    
-    \item<7-> To characterize fracture by its \textbf{development lifecycle}: \textcolor<8>{red}{defects, nucleation}, \textcolor<9>{red}{propagation}, \textcolor<10>{red}{branching}, \textcolor<11>{red}{merging}. \\
-    \only<8>{\includegraphics[width=0.75\textwidth]{Chapter1/figures/nucleation}}
-    \only<9>{\includegraphics[width=0.75\textwidth]{Chapter1/figures/propagation}}
-    \only<10>{\includegraphics[width=0.75\textwidth]{Chapter1/figures/branching}}
-    \only<11>{\includegraphics[width=0.75\textwidth]{Chapter1/figures/merging}}
-    
-    \item<12-> To categorize fracture by \textbf{material response}:
+  \begin{overlayarea}{\textwidth}{0.32\textwidth}
     \begin{itemize}
-      \item<13-> brittle fracture: singularities, abrupt failure, tiny fracture process zone;
-      \item<14-> quasi-brittle fracture: softening, small fracture process zone;
-      \item<15-> cohesive fracture: softening, large fracture process zone;
-      \item<16-> ductile fracture: plastic deformation prior to fracture;
-      \item<16-> ...
+      \item<1-> Fracture is a common phenomenon in engineering applications.
+      
+      \item<2-> To characterize fracture by its \textbf{consequence}: \textcolor<3>{red}{fragmentation}, \textcolor<4>{red}{desiccation}, \textcolor<5>{red}{ductile failure}, \textcolor<6>{red}{spallation}, etc.. \\
+      \includegraphics<3-6>[width=0.12\textwidth]{Chapter1/figures/fragmentation}
+      \includegraphics<4-6>[width=0.3\textwidth]{Chapter1/figures/desiccation}
+      \includegraphics<5-6>[width=0.24\textwidth]{Chapter1/figures/ductile_failure}
+      \includegraphics<6>[width=0.14\textwidth]{Chapter1/figures/spallation}
+      
+      \item<7-> To characterize fracture by its \textbf{development lifecycle}: \textcolor<8>{red}{defects, nucleation}, \textcolor<9>{red}{propagation}, \textcolor<10>{red}{branching}, \textcolor<11>{red}{merging}. \\
+      \includegraphics<8>[width=0.75\textwidth]{Chapter1/figures/nucleation}
+      \includegraphics<9>[width=0.75\textwidth]{Chapter1/figures/propagation}
+      \includegraphics<10>[width=0.75\textwidth]{Chapter1/figures/branching}
+      \includegraphics<11>[width=0.75\textwidth]{Chapter1/figures/merging}
+      
+      \item<12-> To categorize fracture by \textbf{material response}:
+      \begin{itemize}
+        \item<13-> brittle fracture: singularities, abrupt failure, tiny fracture process zone;
+        \item<14-> quasi-brittle fracture: softening, small fracture process zone;
+        \item<15-> cohesive fracture: softening, large fracture process zone;
+        \item<16-> ductile fracture: plastic deformation prior to fracture;
+        \item<16-> ...
+      \end{itemize}
+      \includegraphics<13-16>[width=0.2\textwidth]{Chapter1/figures/brittle}
+      \includegraphics<14-16>[width=0.2\textwidth]{Chapter1/figures/cohesive}
+      \includegraphics<16>[width=0.2\textwidth]{Chapter1/figures/ductile}
+      
+      \item<17-> Coupling with other phenomena: dynamics, viscous dissipation, thermal effects, plasticity, creep, etc..
     \end{itemize}
-    \only<13-16>{\includegraphics[width=0.2\textwidth]{Chapter1/figures/brittle}}
-    \only<14-16>{\includegraphics[width=0.2\textwidth]{Chapter1/figures/cohesive}}
-    \only<16-16>{\includegraphics[width=0.2\textwidth]{Chapter1/figures/ductile}}
-    
-    \item<17-> Coupling with other phenomena: dynamics, viscous dissipation, thermal effects, plasticity, creep, etc..
-  \end{itemize}
+  \end{overlayarea}
   
   \only<18->{
     \begin{block}{}

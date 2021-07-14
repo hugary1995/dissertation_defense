@@ -69,15 +69,15 @@
       \begin{itemize}
         \item From a theoretical standpoint:
               \begin{itemize}
-                \item The direct method of calculus of variations informs conditions for the existence and uniqueness of solutions.
-                \item Localization effects can be studied within the framework of free-discontinuity problems.
+                \item The direct method of \textcolor{peggyblue}{calculus of variations} informs conditions for the existence and uniqueness of solutions.
+                \item Localization effects can be studied within the framework of \textcolor{peggyblue}{free-discontinuity problems}.
               \end{itemize}
         \item From a computational standpoint:
               \begin{itemize}
-                \item Discretization leads to a symmetric operator.
+                \item Discretization leads to a \textcolor{peggyblue}{symmetric operator}.
                 \item Discretization leads to robust and efficient variational constitutive update.
-                \item The total potential can assist line search.
-                \item The total potential can be directly used as an error indicator for adaptive mesh refinement.
+                \item The total potential can assist \textcolor{peggyblue}{line search}.
+                \item The total potential can be directly used as an \textcolor{peggyblue}{error indicator} for adaptive mesh refinement.
                 \item Many powerful optimization packages exist, e.g. PETSc/TAO, Trilinos, Matlab, etc..
               \end{itemize}
       \end{itemize}
@@ -125,25 +125,25 @@
     \pause
     \begin{column}{0.4\textwidth}
       \begin{itemize}
-        \item<2-> Mass balance and angular momentum balance are satisfied by construction.
-        \item<3-> Linear momentum balance:
-        \begin{align*}
-          \rho_0\bta = \divergence\bfP + \btb.
-        \end{align*}
-        \item<4-> Micro-macro force balance:
-        \begin{align*}
-          \divergence \bs{\xi} - f = 0.
-        \end{align*}
-        \item<5-> Plastic flow:
-        \begin{align*}
-          \left( \dot{\defgrad}^p, \epdot \right) = & \ \arg\inf_{\dot{\defgrad}^p, \epdot} \left[ \bfT^\text{eq}:\dot{\defgrad}^p + Y^\text{eq}\epdot + \Delta^* \right] \\
-                                                    & \ \text{subject to }\quad \bfL(\bfZ)\dot{\bfZ} = \bs{0}.                                                            
-        \end{align*}
-        \item<6-> Heat transfer:
-        \begin{align*}
-          T\dot{s} = \rho_0 q - \divergence \bth + \delta.
-        \end{align*}
-        \item<7-> (Strict) dissipation inequality requires $\Delta^*$ to be convex in each rate.
+        \item Mass balance and angular momentum balance are satisfied by construction.
+        \item Linear momentum balance:
+              \begin{align*}
+                \rho_0\bta = \divergence\bfP + \btb.
+              \end{align*}
+        \item Micro-macro force balance:
+              \begin{align*}
+                \divergence \bs{\xi} - f = 0.
+              \end{align*}
+        \item Plastic flow:
+              \begin{align*}
+                \left( \dot{\defgrad}^p, \epdot \right) = & \ \arg\inf_{\dot{\defgrad}^p, \epdot} \left[ \bfT^\text{eq}:\dot{\defgrad}^p + Y^\text{eq}\epdot + \Delta^* \right] \\
+                                                          & \ \text{subject to }\quad \bfL(\bfZ)\dot{\bfZ} = \bs{0}.                                                            
+              \end{align*}
+        \item Heat transfer:
+              \begin{align*}
+                T\dot{s} = \rho_0 q - \divergence \bth + \delta.
+              \end{align*}
+        \item (Strict) dissipation inequality requires $\Delta^*$ to be convex in each rate.
       \end{itemize}
       
       

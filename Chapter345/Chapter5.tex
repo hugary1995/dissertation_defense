@@ -32,32 +32,31 @@
       
       How to best design the \textcolor{peggyblue}{coupling} between plasticity and fracture remains an open question. Some challenges/issues:
       \begin{itemize}
-        \item Fracture tends to propagate along the plastic zone.
-              \pause
-        \item Most existing models
-              \begin{itemize}
-                \item are not variational,
-                      \pause
-                \item require \textcolor{peggyblue}{re-calibration} of material parameters,
-                      \pause
-                \item result in \textcolor{peggyblue}{regularization-dependent} response.
-                      \pause
-              \end{itemize}
-        \item How much plastic work contributes to \textcolor{peggyblue}{fracture evolution}?
-              \pause
-        \item How much plastic work converts to \textcolor{peggyblue}{heat generation}?
+        \item<3-> Fracture tends to propagate along the plastic zone.
+        
+        \item<4-> Most existing models
+        \begin{itemize}
+          \item<4-> are not variational,
+          \item<5-> require \textcolor{peggyblue}{re-calibration} of material parameters,
+          \item<6-> result in \textcolor{peggyblue}{regularization-dependent} response.
+        \end{itemize}
+        \includegraphics<5>{Chapter345/figures/bad_alpha}
+        \includegraphics<6>[width=0.3\textwidth]{Chapter345/figures/R_curve_threshold}
+        \item<7-> How much plastic work contributes to \textcolor{peggyblue}{fracture evolution}?
+        \item<8-> How much plastic work converts to \textcolor{peggyblue}{heat generation}?
       \end{itemize}
       
       \bigskip
-      \pause
       
-      \begin{block}{}
-        \centering
-        \vspace{1em}
-        All of the issues above can be addressed by the proposed framework \\
-        (with proper constitutive choices).
-        \vspace{1em}
-      \end{block}
+      \only<9->{
+        \begin{block}{}
+          \centering
+          \vspace{1em}
+          All of the issues above can be addressed by the proposed framework \\
+          (with proper constitutive choices).
+          \vspace{1em}
+        \end{block}
+      }
     \end{column}
   \end{columns}
 \end{frame}
@@ -414,12 +413,18 @@
 \end{frame}
 
 \begin{frame}
-  \vspace{-1.5em}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \begin{figure}
         \centering
-        \includegraphics[width=0.7\textwidth]{Chapter345/figures/HTHX}
+        \begin{subfigure}{0.45\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{Chapter345/figures/HTHX}
+        \end{subfigure}
+        \begin{subfigure}{0.45\textwidth}
+          \centering
+          \includegraphics[width=\textwidth]{Chapter345/figures/debonding}
+        \end{subfigure}
       \end{figure}
       
       Background:
@@ -433,7 +438,7 @@
       \begin{itemize}
         \item To model energy release associated with debonding:
               \begin{align*}
-                \psi^f = \dfrac{\Gc}{c_0 l} \left( C\alpha(d) + l^2 \grad d \cdot \grad d \right) + \dfrac{1}{\tau} \mathcal{G} \omega(c).
+                \psi^f = \dfrac{\Gc}{c_0 l} \left( C\alpha(d) + l^2 \grad d \cdot \grad d \right) + \textcolor{peggyblue}{\dfrac{1}{\tau} \mathcal{G} \omega(c)}.
               \end{align*}
         \item A lower dimensional representation of the oxide layer:
               \begin{align*}
